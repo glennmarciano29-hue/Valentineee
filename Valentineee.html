@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💕</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#ffb6c1,#ffd6e7);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    max-width:350px;
+    position:relative;
+}
+
+h2{
+    color:#ff4d88;
+    font-weight:600;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:20px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+#yesBtn{
+    background:#ff4d88;
+    color:white;
+}
+
+#noBtn{
+    background:#ccc;
+    position:absolute;
+}
+
+img{
+    width:160px;
+    margin:10px;
+    border-radius:12px;
+}
+
+.hidden{ display:none; }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="opening">
+<h2>
+Aloo kamu pasti engga valentine yaa?? <br>
+Mau valentine sama aku engga??
+</h2>
+
+<p>(jangan pencet no ya 😅)</p>
+
+<button id="yesBtn" onclick="showMain()">Yes</button>
+<button id="noBtn">No</button>
+</div>
+
+<div class="container hidden" id="main">
+<h2>YEEAAAY 😆</h2>
+
+<p>maaf yaa absurd dikit ini juga first time nyobain 😞🙏</p>
+
+<p>Nihh ada bunga sama coklat buat kamu 🌸🍫</p>
+
+<img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946">
+<img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b">
+
+<p>Wkwkwkw nanti yang aslinya nyusul kalo emang bisa ketemu 😛</p>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+
+let size = 1;
+
+// YES makin besar
+yesBtn.addEventListener("click", ()=>{
+    size += 0.3;
+    yesBtn.style.transform = `scale(${size})`;
+});
+
+// NO kabur (HP & PC)
+function moveNo(){
+    const x = Math.random()*200 - 100;
+    const y = Math.random()*200 - 100;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", (e)=>{
+    e.preventDefault();
+    moveNo();
+});
+
+// tetap ke halaman utama kalau somehow kepencet 😆
+noBtn.addEventListener("click", showMain);
+
+function showMain(){
+    document.getElementById("opening").classList.add("hidden");
+    document.getElementById("main").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
